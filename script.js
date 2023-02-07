@@ -13,10 +13,15 @@ const closeModal = function () {
   overlay.classList.add("hidden");
 };
 
-for (let i = 0; i < showModal.length; i++) {
-  showModal[i].addEventListener("click", openModal);
-}
-
+// for (let i = 0; i < showModal.length; i++) {
+//   showModal[i].addEventListener("click", openModal);
+// }
+//Using event delegation(more efficient way)
+document.querySelector(".container").addEventListener("click", function (e) {
+  if (e.target.classList.contains("btn")) {
+    openModal();
+  }
+});
 closeBtn.addEventListener("click", closeModal);
 overlay.addEventListener("click", closeModal);
 
